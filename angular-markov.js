@@ -58,7 +58,6 @@ service('angularMarkov', function() {
         var out = [];
         for (var i = 0; i < len; i++) {
             out.push(seed);
-            console.log(mark, seed)
             var nextWrds = mark[seed];
             if (nextWrds) {
                 seed = nextWrds[Math.floor(Math.random() * nextWrds.length)]
@@ -68,7 +67,6 @@ service('angularMarkov', function() {
             	seed = allWrds[Math.floor(Math.random() * allWrds.length)]
             }
         }
-        console.log(seed);
         return format=='string'? out.join(' '): out;
     }
 })

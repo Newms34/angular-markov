@@ -4,8 +4,10 @@
 	<title>Test page</title>
 </head>
 <body ng-app='testApp' ng-controller='test-controller'>
-Makin sure angular works: {{time}}
-
+Makin sure angular works: {{time}}<hr/>
+<h3>Your text (using the Declaration of Independence):</h3>
+<h4><button ng-click='refr()'>(refresh)</button></h4>
+{{markOut}}
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../angular-markov.js"></script>
 <script src="./test.js"></script>
