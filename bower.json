@@ -1,0 +1,27 @@
+{
+  "name": "angular-markov",
+  "main": "angular-markov.js",
+  "authors": [
+    "newms34 <newms3450@gmail.com>"
+  ],
+  "description": "client-side markov generator for AngularJS 1.x",
+  "keywords": [
+    "angular",
+    "markov",
+    "chain",
+    "prediction",
+    "chat"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Newms34/angular-markov",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0"
+  }
+}
