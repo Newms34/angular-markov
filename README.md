@@ -1,6 +1,6 @@
 # Angular-Markov
 Bower module for Markov chains in Angular!
-##Instalation:
+##Installation:
 Run ```bower install angular-markov```.
 
 Include the dependency in your angular app:
