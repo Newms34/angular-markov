@@ -4,7 +4,8 @@ service('angularMarkov', function() {
         var markItems = []; //list of markov items to be analyzed
         opts = opts || {};
         if (!inp) {
-            return 'Error! No contents specified!'
+            throw new Error('Error! No contents specified!')
+            return false;
         } else if (typeof inp == 'string' && opts.usePunc) {
             markItems = inp.split(' ');
         } else if (typeof inp == 'string' && !opts.usePunc) {
@@ -12,10 +13,12 @@ service('angularMarkov', function() {
         } else if (inp instanceof Array) {
             markItems = inp;
         } else {
-            return 'Error! I\'m not sure what kinda input this is! Please only use arrays or strings.';
+            throw new Error('Error! I\'m not sure what kinda input this is! Please only use arrays or strings.');
+            return false;
         }
         if (!opts.big && markItems.length > 3500) {
-            return markItems.length + ' is too many items! Please include the \'big\' option if you want to proceed anyway!'
+            throw new Error(markItems.length + ' is too many items! Please include the \'big\' option if you want to proceed anyway!')
+            return false;
         }
         //now we can form the markov chain!
         var markObjs = {}; //the markov objects with their list of followers.
@@ -52,6 +55,17 @@ service('angularMarkov', function() {
         opts = opts || {};
         len = parseInt(opts.len) || 200;
         format = opts.format || 'string';
+        if (typeof mark != 'object') {
+            throw new Error('Input is not a valid markov object!')
+            return false;
+        }
+        for (var wrd in mark) {
+            console.log(mark[wrd] instanceof Array)
+            if (mark[wrd] instanceof Array == false) {
+                throw new Error('Input contains invalid words!')
+                return false;
+            }
+        }
         var allWrds = Object.keys(mark);
         var seed = opts.seed || allWrds[Math.floor(Math.random() * allWrds.length)];
         console.log('Your seed is:', seed)
@@ -61,12 +75,11 @@ service('angularMarkov', function() {
             var nextWrds = mark[seed];
             if (nextWrds) {
                 seed = nextWrds[Math.floor(Math.random() * nextWrds.length)]
-            }
-            else{
-            	//in case we used an end word, in which case there ISN'T a following word
-            	seed = allWrds[Math.floor(Math.random() * allWrds.length)]
+            } else {
+                //in case we used an end word, in which case there ISN'T a following word
+                seed = allWrds[Math.floor(Math.random() * allWrds.length)]
             }
         }
-        return format=='string'? out.join(' '): out;
+        return format == 'string' ? out.join(' ') : out;
     }
 })

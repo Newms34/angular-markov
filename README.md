@@ -12,24 +12,24 @@ Include the script file in your HTML:
 
 ##Usage: 
 
- 1 Run ```angularMarkov.readMarkov()``` and pass it a string or array to generate a markov object.
+ 1. Run ```angularMarkov.readMarkov()``` and pass it a string or array to generate a markov object.
 
- 2 Run ```angularMarkov.makeMarkov()``` and pass it a markov object to output some awesome markov output!
+ 2. Run ```angularMarkov.makeMarkov()``` and pass it a markov object to output some awesome markov output!
 
- 3 Pass a second options object to either of the above for more customization.
+ 3. Pass a second options object to either of the above for more customization.
 
 ##Options:
 
 Include the following options (in an object!) to customize your markov awesomeness
 
-###angularMarkov.readMarkov()
+###angularMarkov.readMarkov(input,opts)
 
  - lower: if set to true, everything is lower case. Default ```false```
  - big: if set to true, angular-markov will still parse very large strings/arrays. Note that this can make your computer very sad! Default ```false```.
  - usePunc: Use punctuation. Default ```false```.
 
-###angularMarkov.makeMarkov()
+###angularMarkov.makeMarkov(markObj,opts)
 	
  - format: If set to string, will return a string. Otherwise, will return a non-joined array. Default ```string```
- - seed: Starting word (or item). If this isn't specified, angular-markov will pick one for you.
+ - seed: Starting word (or item). If this isn't specified, angular-markov will pick one for you. How nice.
  - len: Length of the outputted sample. Default ```200```.
